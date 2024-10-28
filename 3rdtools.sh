@@ -32,7 +32,7 @@ function install {
 
   pushd boost_1_68_0
   clean_exec ./bootstrap.sh --without-libraries=python,contract,context,coroutine,fiber,graph,graph_parallel,mpi,wave,log,test,signals,stacktrace,timer --prefix=${rootdir}/3rd/boost_1_68_0
-  clean_exec ./b2 -j8 cxxflags=-fPIC cflags=-fPIC variant=release link=static -a --prefix=${rootdir}/3rd/boost_1_68_0 -j$(nproc) install
+  clean_exec ./b2 cxxflags=-fPIC cflags=-fPIC variant=release link=static -a --prefix=${rootdir}/3rd/boost_1_68_0 -j$(nproc --ignore=1) install
   popd
 
   pushd ${rootdir}/3rd
